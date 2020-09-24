@@ -16,17 +16,17 @@ namespace WebApplication.Controllers
         // GET: AutorController
         public ActionResult Index()
         {
-            var client = new RestClient();
-            var request = new RestRequest(_linkApi + "autor", DataFormat.Json);
+                var client = new RestClient();
+                var request = new RestRequest(_linkApi + "autor", DataFormat.Json);
 
-            request.AddHeader("Authorization", $"Bearer {this.HttpContext.Session.GetString("Token")}");
+                request.AddHeader("Authorization", $"Bearer {this.HttpContext.Session.GetString("Token")}");
 
-            var response = client.Get<List<Autor>>(request);
+                var response = client.Get<List<Autor>>(request);
 
-            if (response.Data == null)
-                response.Data = new List<Autor>();
+                if (response.Data == null)
+                    response.Data = new List<Autor>();
 
-            return View(response.Data);
+                return View(response.Data);
         }
 
         // GET: AutorController/Details/5

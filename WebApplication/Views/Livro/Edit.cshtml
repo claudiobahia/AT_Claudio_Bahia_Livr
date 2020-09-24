@@ -15,22 +15,22 @@
             <input type="hidden" asp-for="id" />
             <div class="form-group">
                 <label asp-for="titulo" class="control-label"></label>
-                <input asp-for="titulo" class="form-control" />
+                <input asp-for="titulo" class="form-control" required/>
                 <span asp-validation-for="titulo" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="isbn" class="control-label"></label>
-                <input asp-for="isbn" class="form-control" />
+                <input asp-for="isbn" class="form-control" required/>
                 <span asp-validation-for="isbn" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="ano" class="control-label"></label>
-                <input asp-for="ano" class="form-control" />
+                <input asp-for="ano" class="form-control" required/>
                 <span asp-validation-for="ano" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="autorid" class="control-label"></label>
-                <select asp-for="autorid" class="form-control" asp-items="ViewBag.autorid"></select>
+                <input asp-for="autorid" class="form-control" asp-items="ViewBag.autorid" required/>
                 <span asp-validation-for="autorid" class="text-danger"></span>
             </div>
             <div class="form-group">

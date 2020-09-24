@@ -16,10 +16,10 @@ namespace WebApplication.Controllers
 {
     public class LivroController : Controller
     {
-        string _linkApi = "https://localhost:5001/api/";
+        readonly string _linkApi = "https://localhost:5001/api/";
 
         // GET: LivroController
-        public async Task<ActionResult> Index()
+        public ActionResult Index()
         {
             var client = new RestClient();
             var request = new RestRequest(_linkApi + "livro", DataFormat.Json);
