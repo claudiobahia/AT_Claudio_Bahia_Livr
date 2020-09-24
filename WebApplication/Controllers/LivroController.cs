@@ -16,17 +16,15 @@ namespace WebApplication.Controllers
 {
     public class LivroController : Controller
     {
-        string _linkApi = "http://localhost:5000/api/";
+        string _linkApi = "https://localhost:5001/api/";
 
         // GET: LivroController
         public async Task<ActionResult> Index()
         {
-            string token = this.HttpContext.Session.GetString("Token");
             var client = new RestClient();
-            client.Authenticator = new JwtAuthenticator(token);
             var request = new RestRequest(_linkApi + "livro", DataFormat.Json);
 
-            //Não esta adicionando o Token no Header Bearer
+            request.AddHeader("Authorization", $"Bearer {this.HttpContext.Session.GetString("Token")}");
 
             var response = client.Get<List<Livro>>(request);
 
@@ -42,6 +40,8 @@ namespace WebApplication.Controllers
         {
             var client = new RestClient();
             var request = new RestRequest(_linkApi + "livro/" + id, DataFormat.Json);
+            request.AddHeader("Authorization", $"Bearer {this.HttpContext.Session.GetString("Token")}");
+
 
             var response = client.Get<Livro>(request);
 
@@ -66,6 +66,8 @@ namespace WebApplication.Controllers
 
                 var client = new RestClient();
                 var request = new RestRequest(_linkApi + "livro", DataFormat.Json);
+                request.AddHeader("Authorization", $"Bearer {this.HttpContext.Session.GetString("Token")}");
+
                 request.AddJsonBody(livro);
 
                 var response = client.Post<Livro>(request);
@@ -84,6 +86,8 @@ namespace WebApplication.Controllers
         {
             var client = new RestClient();
             var request = new RestRequest(_linkApi + "livro/" + id, DataFormat.Json);
+            request.AddHeader("Authorization", $"Bearer {this.HttpContext.Session.GetString("Token")}");
+
 
             var response = client.Get<Livro>(request);
 
@@ -102,6 +106,8 @@ namespace WebApplication.Controllers
 
                 var client = new RestClient();
                 var request = new RestRequest(_linkApi + "livro/" + id, DataFormat.Json);
+                request.AddHeader("Authorization", $"Bearer {this.HttpContext.Session.GetString("Token")}");
+
                 request.AddJsonBody(livro);
 
                 var response = client.Put<Livro>(request);
@@ -119,6 +125,8 @@ namespace WebApplication.Controllers
         {
             var client = new RestClient();
             var request = new RestRequest(_linkApi + "livro/" + id, DataFormat.Json);
+            request.AddHeader("Authorization", $"Bearer {this.HttpContext.Session.GetString("Token")}");
+
 
             var response = client.Get<Livro>(request);
 
@@ -134,6 +142,8 @@ namespace WebApplication.Controllers
             {
                 var client = new RestClient();
                 var request = new RestRequest(_linkApi + "livro/" + id, DataFormat.Json);
+                request.AddHeader("Authorization", $"Bearer {this.HttpContext.Session.GetString("Token")}");
+
                 request.AddJsonBody(livro);
 
                 var response = client.Delete<Livro>(request);
